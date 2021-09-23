@@ -8,8 +8,9 @@ const GAME = [
     "  P   ",
 ]
 const BOARD = document.getElementById("gameBoard");
+console.log(BOARD.getBoundingClientRect())
 
-const createGame = (game) => {
+const createGame = async (game) => {
 
     for (let i = 0; i < game.length; i++) {
         const row = document.createElement("div")
@@ -36,4 +37,40 @@ const createGame = (game) => {
     
 }
 
+
 createGame(GAME);
+let yPosition = document.getElementById("ball").style.top = ball.getBoundingClientRect().top
+let xPosition = document.getElementById("ball").style.left = ball.getBoundingClientRect().left;
+var count = 0;
+
+const moveBall = () => {
+    const ball = document.getElementById("ball");
+
+    if (count == 0) {
+        var moveDown = yPosition + 20
+    }
+
+    // console.log(yPosition)
+    // let moveLeft = xPosition + 20;
+    // xPosition = moveLeft
+    // console.log({moveLeft})
+    // console.log(yPosition)
+    
+    // ball.style.left = moveLeft + "px";
+    
+    if (count == 1) {
+        moveDown = yPosition - 20;
+        
+    }  
+    
+    if (parseInt(ball.style.top) > 750 ){
+        count = 1
+    }
+    if (parseInt(ball.style.top) < 320) {
+        count = 0;
+    }
+    yPosition = moveDown;
+    ball.style.top = moveDown + "px";
+    console.log(ball.style.top)
+}
+setInterval(moveBall, 75);
