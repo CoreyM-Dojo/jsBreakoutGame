@@ -8,37 +8,32 @@ const GAME = [
     "  P   ",
 ]
 const BOARD = document.getElementById("gameBoard");
+
 const createGame = (game) => {
-    let result = ""
 
     for (let i = 0; i < game.length; i++) {
-        console.log(i)
-        console.log(game[i])
-        if (i != game.length -1) {
-            content = "<div class='row'>"
+        const row = document.createElement("div")
+        row.setAttribute("class", "row")
+        for (let j= 0; j < game[i].length; j++) {
+            if (game[i][j] == "x") {
+                const block = document.createElement("div")
+                block.setAttribute("class", "block")
+                row.appendChild(block)
+            }
+            else if (game[i][j] == "o") {
+                const ball = document.createElement("div")
+                ball.setAttribute("id", "ball")
+                row.appendChild(ball);
+            }
+            else if (game[i][j] == "P") {
+                const player = document.createElement("div")
+                player.setAttribute("id", "player");
+                row.appendChild(player);
+            }
         }
-        for (let j = 0; j < game[i].length; j++) {
-            console.log("Row location:",game[i][j])
-            if (game[i][j] === 'x') {
-                content += "<div class='block'></div>" 
-            }
-            else if (game[i][j] === 'o') {
-                content += "<div id='ball'></div>"
-            }
-            else if (game[i][j] === 'P') {
-                content += "<div class='player'></div>"
-            }
-            else {
-                continue
-            }
-        }
-        if (i != game.length - 1){
-            content += "</div>"
-        }
-        result += content;
-        console.log(content);
+        BOARD.appendChild(row);
     }
-    return BOARD.innerHTML = result;
+    
 }
 
 createGame(GAME);

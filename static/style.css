@@ -35,7 +35,7 @@ div.row {
     display: flex;
 }
 
-div.player{
+div#player{
     justify-self: flex-end;
     margin-top:300px;
     background-color: pink;
