@@ -4,14 +4,15 @@ const GAME = [
     "xxxxxx",
     " xxxx ", 
     "  x   ",
-    "      ",
-    "  P   "
+    "  o   ",
+    "  P   ",
 ]
 const BOARD = document.getElementById("gameBoard");
 const createGame = (game) => {
     let result = ""
 
     for (let i = 0; i < game.length; i++) {
+        console.log(i)
         console.log(game[i])
         if (i != game.length -1) {
             content = "<div class='row'>"
@@ -21,15 +22,23 @@ const createGame = (game) => {
             if (game[i][j] === 'x') {
                 content += "<div class='block'></div>" 
             }
+            else if (game[i][j] === 'o') {
+                content += "<div id='ball'></div>"
+            }
             else if (game[i][j] === 'P') {
                 content += "<div class='player'></div>"
             }
+            else {
+                continue
+            }
         }
-        content += "</div>"
+        if (i != game.length - 1){
+            content += "</div>"
+        }
         result += content;
         console.log(content);
     }
-    BOARD.innerHTML = result;
+    return BOARD.innerHTML = result;
 }
 
 createGame(GAME);

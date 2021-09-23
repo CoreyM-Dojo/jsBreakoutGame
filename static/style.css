@@ -2,40 +2,42 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: red solid 1px;
+    /* border: red solid 1px */
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 800px;
-}
 
-#gameBoard {
+
+div#gameBoard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
+    margin: 20% auto;
     background-color: black;
     width: 600px;
     height: 500px;
 }
-.block {
+
+div#ball {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: red;
+}
+div.block {
     background-color: blue;
     height: 20px;
     width: 75px;
     margin: 5px;
 }
 
-.row {
+div.row {
     height: 25px;
     display: flex;
 }
 
-.player{
-    position: relative;
-    bottom: 0;
+div.player{
+    justify-self: flex-end;
+    margin-top:300px;
     background-color: pink;
     height: 10px;
     width: 100px;
