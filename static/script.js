@@ -41,36 +41,51 @@ const createGame = async (game) => {
 createGame(GAME);
 let yPosition = document.getElementById("ball").style.top = ball.getBoundingClientRect().top
 let xPosition = document.getElementById("ball").style.left = ball.getBoundingClientRect().left;
-var count = 0;
+var vertical = 0;
+var horizontal = 0
 
 const moveBall = () => {
     const ball = document.getElementById("ball");
 
-    if (count == 0) {
+    if (vertical == 0) {
         var moveDown = yPosition + 20
+    }
+    if (horizontal == 0) {
+        var moveLeft = xPosition + 10;
     }
 
     // console.log(yPosition)
     // let moveLeft = xPosition + 20;
-    // xPosition = moveLeft
     // console.log({moveLeft})
     // console.log(yPosition)
     
     // ball.style.left = moveLeft + "px";
     
-    if (count == 1) {
+    if (vertical == 1) {
         moveDown = yPosition - 20;
         
     }  
+    if (horizontal == 1) {
+        moveLeft = xPosition - 10;
+    }
     
     if (parseInt(ball.style.top) > 750 ){
-        count = 1
+        vertical = 1
     }
     if (parseInt(ball.style.top) < 320) {
-        count = 0;
+        vertical = 0;
     }
+
+    if (parseInt(ball.style.left) > 810 ){
+        horizontal = 1
+    }
+    if (parseInt(ball.style.left) < 270) {
+        horizontal = 0;
+    }
+    xPosition = moveLeft
     yPosition = moveDown;
+    ball.style.left = moveLeft + "px";
     ball.style.top = moveDown + "px";
-    console.log(ball.style.top)
+    console.log(ball.style.left)
 }
 setInterval(moveBall, 75);
