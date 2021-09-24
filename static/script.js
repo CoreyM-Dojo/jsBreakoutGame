@@ -9,6 +9,10 @@ const GAME = [
 ]
 const BOARD = document.getElementById("gameBoard");
 console.log(BOARD.getBoundingClientRect())
+document.addEventListener("keydown", function(e) {
+    console.log(e)
+    movePlayer(e);
+})
 
 const createGame = async (game) => {
 
@@ -88,4 +92,24 @@ const moveBall = () => {
     ball.style.top = moveDown + "px";
     console.log(ball.style.left)
 }
+const player = document.getElementById("player")
+console.log(player)
+playerPos = document.getElementById("player").getBoundingClientRect().left
+const movePlayer = (e) => {
+    if (e.key === "ArrowLeft") {
+        // const player = document.getElementById("player")
+        // console.log(document.getElementById("ball").getBoundingClientRect)
+        console.log(player.style.left)
+        playerPos = (parseInt(playerPos) - 30) + "px";
+        player.style.left = playerPos;
+        console.log("Move left")
+    }
+    else if (e.key == "ArrowRight") { 
+        playerPos = (parseInt(playerPos) + 30) + "px"
+        player.style.left = playerPos;
+        console.log("Move right");
+    }
+
+}
+// setInterval(movePlayer, 100);
 setInterval(moveBall, 75);

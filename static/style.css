@@ -38,8 +38,9 @@ div.row {
 }
 
 div#player{
-    justify-self: flex-end;
-    margin-top:300px;
+    position: absolute;
+    top: 750px;
+    left: 500px;
     background-color: pink;
     height: 10px;
     width: 100px;
