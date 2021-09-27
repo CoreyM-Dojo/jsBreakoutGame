@@ -90,7 +90,7 @@ const moveBall = () => {
     yPosition = moveDown;
     ball.style.left = moveLeft + "px";
     ball.style.top = moveDown + "px";
-    console.log(ball.style.left)
+    // console.log(ball.style.left)
 }
 const player = document.getElementById("player")
 console.log(player)
@@ -111,5 +111,38 @@ const movePlayer = (e) => {
     }
 
 }
+
+const getDistance = (x1, x2, y1, y2) => {
+    let xDistance = Math.abs(x1 - x2)
+    let yDistance = Math.abs(y1 - y2)
+    let distance = Math.sqrt(Math.pow(xDistance,2) + Math.pow(yDistance,2));
+    return distance;
+}
+
+// console.log(allBlocks);
+function checkCollision() {
+    let allBlocks = document.getElementsByClassName('block')
+    
+    for (let i = 0; i < allBlocks.length; i++) {
+        ball = document.getElementById("ball");
+    
+        let x1 = allBlocks[i].getBoundingClientRect().x;
+        let y1 = allBlocks[i].getBoundingClientRect().y;
+        let x2 = ball.getBoundingClientRect().x;
+        let y2 = ball.getBoundingClientRect().y;
+        let overlap = allBlocks[i].getBoundingClientRect().height/2
+        if (getDistance(x1,x2,y1,y2) - overlap <= 0) {
+            console.log("HIT!")
+            console.log(getDistance(x1,x2,y1,y2));
+            allBlocks[i].parentNode.removeChild(allBlocks[i]);
+            vertical = 0
+            horizontal = 0
+        }
+        else {
+            console.log("No hit")
+        }
+    }
+}
 // setInterval(movePlayer, 100);
 setInterval(moveBall, 75);
+setInterval(checkCollision, 75);
